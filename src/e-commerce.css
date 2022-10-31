@@ -1,5 +1,34 @@
 .container{
-  padding: 40px;
+  padding: 40px;;
   font-family: Arial;
+  margin: auto;
   align-items: center;
+}
+.wrapper{
+  height: auto;
+  width: 50%;
+  margin:auto;
+  font-family: Arial;
+  align-self: center;
+}
+.header1{
+  text-align: center;
+  font-size: 200%;
+  font-style: Arial;
+}
+.labelform{
+  text-align: right;
+  margin: 10px;
+}
+.labelform input[type=text]{
+  width: 77%;
+  margin-left: 5px;
+}
+.labelform input[type=button]{
+  background-color: aqua;
+  padding: 10px;
+  transition-duration: 0.4s;
+}
+.labelform input[type=button]:hover{
+  background-color: white;
 }
