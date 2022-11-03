@@ -1,16 +1,24 @@
-import { Button } from 'bootstrap'
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import './e-commerce.css'
 
 const Register = () => {
   const[data,setdata]=useState({email:"",firstname:"",lastname:"",middlename:"",password:"",confirmpassword:""});
   const {email,firstname,lastname,middlename,password,confirmpassword} = data;
-  
+
+  const EmailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+
+
   const handleChange= e =>{
     setdata({...data,[e.target.name]:[e.target.value]});
-    console.log(data);
   }
+  const handlesubmit = e =>{
+    e.preventDefault();
+    //axios.put("/register",data).then(res=>console.log(res));
+  }
+  useEffect=(()=>{
 
+  },[password,confirmpassword]);
   return (
     <div className = "container">
         <div className='wrapper'>
@@ -18,24 +26,30 @@ const Register = () => {
             <form className='labelform' >
                 <hr></hr>
                 <label className='textcss'>Email Address:</label>
-                <input name = "email" type = "text" onChange={handleChange} value ={email} />
+                <br></br> 
+                <input name = "email" type = "text" onChange={handleChange} value ={email} required/>
                 <br></br>  <br></br> 
                 <label>First Name:</label>
-                <input name="firstname" type = "text" onChange={handleChange} value ={firstname}/>
+                <br></br> 
+                <input name="firstname" type = "text" onChange={handleChange} value ={firstname} required/>
                 <br></br><br></br> 
                 <label>Middle Name:</label>
-                <input name = "middlename" type = "text" onChange={handleChange} value ={middlename}/>
+                <br></br> 
+                <input name = "middlename" type = "text" onChange={handleChange} value ={middlename} required/>
                 <br></br><br></br> 
                 <label>Last Name:</label>
-                <input name = "lastname" type = "text" onChange={handleChange} value ={lastname}/>
+                <br></br> 
+                <input name = "lastname" type = "text" onChange={handleChange} value ={lastname} required/>
                 <br></br><br></br> 
                 <label>Password:</label>
-                <input name = "password" type = "text" onChange={handleChange} value ={password}/>
+                <br></br> 
+                <input name = "password" type = "text" onChange={handleChange} value ={password} required/>
                 <br></br><br></br> 
                 <label>Confirm Password:</label>
-                <input name = "confirmpassword" type = "text" onChange={handleChange} value ={confirmpassword}/>
+                <br></br> 
+                <input name = "confirmpassword" type = "text" onChange={handleChange} value ={confirmpassword} required/>
                 <br></br><br></br> 
-                <input type = "button" value="Submit"/>
+                <input type = "submit" value="Submit" onClick={handlesubmit}/>
                 <hr></hr>
             </form>
         </div>

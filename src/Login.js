@@ -3,10 +3,13 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
  const Login = () => {
     const [username, setUsername] = React.useState();
     const[password,setPassword]= React.useState();
-  
+    
+    
+
     const handleChange = event =>{
         if(event.target.type === "email"){
           setUsername(event.target.value);
@@ -17,6 +20,11 @@ import {Link} from 'react-router-dom';
         
     }
 
+    const handlesubmit = e =>{
+        axios.post("http://localhost:8080/", {"email": username, "password":password}).then(res=>{
+            console.log(res);
+        });
+    }
     return (
         <Container fluid = "md">
             <Form>
@@ -35,11 +43,11 @@ import {Link} from 'react-router-dom';
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handlesubmit}>
                 Submit
             </Button>
             <Link to = "/register">
-            <Button className = "m-1" variant="secondary" type="submit">
+            <Button className = "m-1" variant="secondary" type="submit" >
                 Register
             </Button>
             </Link>
